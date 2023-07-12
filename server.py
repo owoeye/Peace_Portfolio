@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
 # import requests
 import smtplib
+import os
 
 app = Flask(__name__)
 
-MY_MAIL = "owoeyepeace4@gmail.com"
-PASSWORD = "tlydqnzfseqhwjhb"
+MY_MAIL = os.environ.get("MY_MAIL")
+PASSWORD = os.environ.get("PASSWORD")
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -31,7 +32,6 @@ def home():
     else:
         return render_template("index.html", msq_sent=False)
     # return render_template("index.html")
-
 
 
 if __name__ == "__main__":
